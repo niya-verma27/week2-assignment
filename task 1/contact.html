@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Technology | Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Apex Technology</a>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your name">
+                <div class="error-msg" id="nameError">Please enter at least 2 characters.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email">
+                <div class="error-msg" id="emailError">Please enter a valid email address.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" placeholder="Write your message here..."></textarea>
+                <div class="error-msg" id="messageError">Message must be at least 10 characters long.</div>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+            <div class="success-msg" id="successMsg">Thank you! Your message has been sent successfully.</div>
+        </form>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="services.html">Services</a> |
+            <a href="contact.html">Contact</a>
+        </div>
+        <p>&copy; 2026 Apex Technology Pvt Ltd. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Protected Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      padding-top: 50px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 400px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h2>Dashboard</h2>
+    <p id="welcomeText">Loading protected data...</p>
+    <p id="userEmail"></p>
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <script>
+    async function loadDashboard() {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        window.location.href = '/index.html';
+        return;
+      }
+
+      const res = await fetch('/api/auth/dashboard', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        document.getElementById('welcomeText').textContent = data.message;
+        document.getElementById('userEmail').textContent = `Logged in as: ${data.user.email}`;
+      } else {
+        // Token invalid or expired
+        localStorage.removeItem('token');
+        window.location.href = '/index.html';
+      }
+    }
+
+    // Logout clears token and redirects
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      window.location.href = '/index.html';
+    });
+
+    loadDashboard();
+  </script>
+</body>
+
+</html>
